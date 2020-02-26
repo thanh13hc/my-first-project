@@ -1,0 +1,50 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Roboto', sans-serif ;
+}
+a{
+    text-decoration: none;
+}
+.data {
+    width: 80%;
+    display: block;
+    margin: 0px 40px;
+    padding: 5px 0px;
+}
+.fas{
+    color: #555555;
+    font-size: 12px;
+    padding: 10px;
+    border: 1px solid #CCCCCC;
+    background-color: #EEEEEE;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+.UAndP {
+    width: 82%;
+    margin: 0px;
+    padding: 8px;
+}
+
+input[type="submit"] {
+    background-color: #337AB7;
+    margin: 10px 0px 16px 0px;
+    margin-left: 39%;
+    padding: 8px 80px 8px 80px;
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+    color: wheat;
+}
+
+input[type="submit"]:hover {
+    background-color: #286090;
+}
+
+ul {
+    margin-left: 30px;
+}
+
+ul li {
+    margin-bottom: 20px;
+}
