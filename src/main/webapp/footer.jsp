@@ -1,23 +1,47 @@
-<%@ page import="com.Mysite.common.*" %>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-	
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="utf-8">
-<script src="https://kit.fontawesome.com/a076d05399.js"></script>
-<title>Quản lí đào tạo - Trường Đại Học Xây Dựng</title>
-<link rel="stylesheet" href="<%=Common.url%>css/index.css">
-</head>
-<body>
-	<div class="footer"
-		style="background-color: #08406F; padding-top: 12px; padding-bottom: 12px; color: white; letter-spacing: 1px; font-size: 14px; text-align: center;">
-		<p style="margin-bottom: 5px;">© Bản quyền thuộc về trường Đại học
-			Xây Dựng.</p>
-		<p>Quản lý bởi Phòng Đào tạo. Số ĐT: 024.38691300.
-			Email:phongdaotao@nuce.edu.vn</p>
-	</div>
 
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/my-style.css">
+	<link href="https://unpkg.com/bootstrap@4.3.1/dist/css/bootstrap.min.css" rel="stylesheet" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+	<!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="/QuanLiLop/home"><h1>mywebsite<span style="color: #4CAF50;">.com</span></h1></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/QuanLiLop/home">Home
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 </body>
+
 </html>

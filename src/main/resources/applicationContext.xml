@@ -8,15 +8,18 @@
     http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
 	<context:annotation-config />
+	
 	<context:component-scan
-		base-package="com.Mysite.*" />
+		base-package="vn.my_project.*" />
+		
+	<context:property-placeholder location="classpath:Bean.properties"/>	
 
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName"
 			value="com.mysql.cj.jdbc.Driver" />
 		<property name="url"
-			value="jdbc:mysql://localhost:3306/dhxd" />
+			value="jdbc:mysql://localhost:3306/my_project" />
 		<property name="username" value="root" />
 		<property name="password" value="12345678@" />
 	</bean>
@@ -26,17 +29,18 @@
 		<property name="dataSource" ref="dataSource" />
 		<property name="annotatedClasses">
 			<list>
-				<value>com.Mysite.model.User</value>
-				<value>com.Mysite.model.Khoa</value>
-				<value>com.Mysite.model.Lop</value>
-				<value>com.Mysite.model.Sinhvien</value>
+				<value>vn.my_project.model.Monhoc</value>
+				<value>vn.my_project.model.Lop</value>
+				<value>vn.my_project.model.Giaovien</value>
+				<value>vn.my_project.model.Sinhvien</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
-				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.show_sql">true</prop>
 			</props>
 		</property>
 	</bean>
+	
 </beans>

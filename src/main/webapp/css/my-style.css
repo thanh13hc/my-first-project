@@ -1,0 +1,19 @@
+body{
+    margin:0px;
+  padding: 0px;
+}
+.container-fluid {
+  padding-left: 0px!important;
+  padding-right: 0px!important;
+}
+
+.carousel-indicators li{
+  background-color: black!important;
+  width: 6px!important;
+  height: 6px!important;
+  border-radius: 100%;
+  margin: 0px 10px;
+}
+.carousel-indicators .active{
+  background-color: white!important;
+}
