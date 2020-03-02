@@ -1,6 +1,8 @@
 body{
     margin:0px;
   padding: 0px;
+  background-color: #f1f2f394!important;
+  font-family: 'Roboto' ;
 }
 .container-fluid {
   padding-left: 0px!important;
@@ -17,3 +19,12 @@ body{
 .carousel-indicators .active{
   background-color: white!important;
 }
+
+i.far.fa-edit{
+  color:#FEC61F!important;
+  margin-right: 0.5rem;
+}
+i.fas.fa-trash {
+  color:#F45549!important;
+}
+

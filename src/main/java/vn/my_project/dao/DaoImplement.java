@@ -55,7 +55,7 @@ public class DaoImplement<ID extends Serializable, T> implements DaoInterface<ID
 		try {
 			session = sessionFactory.openSession();
 			transaction = session.beginTransaction();
-			list = (List<T>) session.createQuery(query);
+			list = (List<T>) session.createQuery(query).list();
 			transaction.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -76,7 +76,7 @@ public class DaoImplement<ID extends Serializable, T> implements DaoInterface<ID
 		try {
 			session = sessionFactory.openSession();
 			transaction = session.beginTransaction();
-			obj = (T) session.get(this.getPersistantClassName(), id);
+			obj = (T) session.get(this.persistantClass, id);
 			if (obj == null) {
 				throw new NotFoundException("NOT FOUND " + this.getPersistantClassName() + " " + id, null);
 			}
