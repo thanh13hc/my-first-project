@@ -70,4 +70,9 @@ public class Monhoc implements java.io.Serializable {
 		this.lops = lops;
 	}
 
+	@Override
+	public String toString() {
+		return "Monhoc [maMonhoc=" + maMonhoc + ", tenMonhoc=" + tenMonhoc + "]";
+	}
+
 }

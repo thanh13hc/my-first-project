@@ -23,13 +23,13 @@ public class MonhocService implements ServiceInterface<Integer, Monhoc> {
 
 		// tim limit neu cac mon con lai < so mon yeu cau
 		// vd yeu cau 50 mon ma chi co 46 mon -> limit = 6
-		if ((rowStart * soMon + soMon) < numberOfMonhoc)
+		if ((rowStart + soMon) < numberOfMonhoc)
 			limit = soMon;
 		else
-			limit = numberOfMonhoc - (rowStart * soMon);
+			limit = numberOfMonhoc - rowStart ;
 		
 		// page = 1 -> list 1-10
-		List<Monhoc> list = monhocDao.getMonhocLimit(rowStart, limit - 1);
+		List<Monhoc> list = monhocDao.getMonhocLimit(rowStart, limit);
 		return list;
 	}
 	

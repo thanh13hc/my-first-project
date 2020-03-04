@@ -77,4 +77,9 @@ public class Sinhvien implements java.io.Serializable {
 		this.lops = lops;
 	}
 
+	@Override
+	public String toString() {
+		return "Sinhvien [maSinhvien=" + maSinhvien + ", ho=" + ho + ", ten=" + ten + ", lops=" + lops + "]";
+	}
+	
 }

@@ -21,7 +21,7 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
-<body>
+<body style="background-color: #7dff0738;">
 	<%@include file="../../header.jsp"%>
 
 	<!-- body -->

@@ -10,14 +10,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import net.bytebuddy.asm.Advice.This;
 import vn.my_project.model.Monhoc;
 import vn.my_project.service.MonhocService;
 
 @WebServlet(value = "/mon")
 public class DanhsachMon extends HttpServlet {
+	
+	static Logger log = Logger.getLogger(DanhsachMon.class.getName());
+
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -48,6 +53,8 @@ public class DanhsachMon extends HttpServlet {
 
 	void editForm(HttpServletRequest req, HttpServletResponse resp, MonhocService monhocService)
 			throws ServletException, IOException {
+		log.info("Trang edit Mon hoc ...");
+		
 		int id = Integer.valueOf(req.getParameter("id"));
 		Monhoc mon = monhocService.readByID(id);
 		req.setAttribute("mon", mon);
@@ -56,6 +63,8 @@ public class DanhsachMon extends HttpServlet {
 
 	void listMonHoc(HttpServletRequest req, HttpServletResponse resp, MonhocService monhocService)
 			throws ServletException, IOException {
+		log.info("Trang danh sach Mon hoc ...");
+		
 		int pageNum = Integer.valueOf((req.getParameter("p") == null ? "1" : req.getParameter("p")));
 		List<Monhoc> list = monhocService.getLimitList(pageNum);
 		int maxPage = monhocService.getNumberOfMonhoc() / 10 + (monhocService.getNumberOfMonhoc() % 10 == 0 ? 0 : 1);
@@ -65,6 +74,7 @@ public class DanhsachMon extends HttpServlet {
 	}
 
 	void delete(HttpServletRequest req, HttpServletResponse resp, MonhocService monhocService) throws IOException {
+		log.info("Delete 1 Mon hoc ...");
 		int id = Integer.valueOf(req.getParameter("id"));
 		monhocService.delete(id);
 		resp.sendRedirect("/QuanLiLop/mon");
@@ -93,6 +103,8 @@ public class DanhsachMon extends HttpServlet {
 	}
 
 	void edit(HttpServletRequest req, HttpServletResponse resp, MonhocService monhocService) throws IOException {
+		log.info("Edit Mon hoc ...");
+		
 		int maMon = Integer.valueOf(req.getParameter("maMon"));
 		String tenMonhoc = req.getParameter("tenMon");
 		Monhoc mon = new Monhoc(maMon, tenMonhoc);
@@ -102,6 +114,8 @@ public class DanhsachMon extends HttpServlet {
 
 	private void deletes(HttpServletRequest req, HttpServletResponse resp, MonhocService monhocService)
 			throws IOException {
+		log.info("Delete 1 Mon hoc ...");
+		
 		List<Integer> ids = new ArrayList<Integer>();
 		int pageNum = Integer.valueOf((req.getParameter("p") == null ? "1" : req.getParameter("p")));
 		List<Monhoc> list = monhocService.getLimitList(pageNum);

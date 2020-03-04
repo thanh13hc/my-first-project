@@ -20,8 +20,8 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
-<body>
-	<%@include file="../../header.jsp"%>
+<body style="background-color: #7dff0738;"><%@include
+		file="../../header.jsp"%>
 
 	<!-- body -->
 	<div class="container-fluid mt-5">
@@ -34,32 +34,39 @@
 
 			<!-- trung tam -->
 			<div class="col-sm-6">
-				<div class="row mb-3" style="background-color:  #435D7D;">
-                    <div class="col-sm-12 mt-3 mb-3">
-                        <h4 style="color: whitesmoke;">Sửa <span style="font-weight: bolder;">môn học </span></h4>
-                    </div>
-                </div>
-                <div class="row">
-                    <form action="/QuanLiLop/mon?page=edit" method="post" style="width: 100%;">
-                        <div class="form-group row">
-                            <label for="inputEmail" class="offset-sm-1 col-sm-3 col-form-label">Mã môn học</label>
-                            <div class="col-sm-6">
-                                <input type="text" name = "maMon" class="form-control-plaintext" id="inputEmail" value="${mon.maMonhoc}" readonly">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="inputText" class="offset-sm-1 col-sm-3 col-form-label">Tên môn học</label>
-                            <div class="col-sm-6">
-                                <input type="text" name = "tenMon" class="form-control" id="inputPassword" value="${mon.tenMonhoc}">
-                            </div>
-                        </div>
-                        <div class="form-group row mt-3">
-                            <div class="col-sm-10 offset-sm-3">
-                                <button type="submit" class="btn btn-primary">Lưu</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+				<div class="row mb-3" style="background-color: #435D7D;">
+					<div class="col-sm-12 mt-3 mb-3">
+						<h4 style="color: whitesmoke;">
+							Sửa <span style="font-weight: bolder;">môn học </span>
+						</h4>
+					</div>
+				</div>
+				<div class="row">
+					<form action="/QuanLiLop/mon?page=edit" method="post"
+						style="width: 100%;">
+						<div class="form-group row">
+							<label for="inputEmail"
+								class="offset-sm-1 col-sm-3 col-form-label">Mã môn học</label>
+							<div class="col-sm-6">
+								<input type="text" name="maMon" class="form-control-plaintext"
+									id="inputEmail" value="${mon.maMonhoc}"readonly">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="inputText"
+								class="offset-sm-1 col-sm-3 col-form-label">Tên môn học</label>
+							<div class="col-sm-6">
+								<input type="text" name="tenMon" class="form-control"
+									id="inputPassword" value="${mon.tenMonhoc}">
+							</div>
+						</div>
+						<div class="form-group row mt-3">
+							<div class="col-sm-10 offset-sm-3">
+								<button type="submit" class="btn btn-primary">Lưu</button>
+							</div>
+						</div>
+					</form>
+				</div>
 			</div>
 
 			<!-- phai -->

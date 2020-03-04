@@ -17,21 +17,22 @@ public class LopService implements ServiceInterface<Integer, Lop> {
 	@Autowired
 	LopDao lopDao;
 	
-
-	public void DangKiGiangDay(int maLop,int maGiaovien) {
-//		Lop lop = lopDao.readByID(maLop);
-//		Set<Giaovien> set = lopDao.getSetGiaovienByLop(maLop);
-//		Giaovien gv = giaovienDao.readByID(maGiaovien);
-//		
-//		System.out.println(set.size());
-//		
-//		set.add(gv);
-//		lop.setGiaoviens(set);
-//
-//		lopDao.update(lop);
-		
+	public List<Lop> getLopBySearchQuery(String query){
+		return lopDao.getLopBySearchQuery(query);
+	}
+	
+	public List<Lop> getLopByMonhoc(int monID) {
+		return lopDao.getLopByMonhoc(monID);
+	}
+	
+	public void dangKiGiangDay(int maLop,int maGiaovien) {
 		lopDao.dangKiGiangDay(maLop, maGiaovien);
 	}
+	
+	public void dangKiHoc(int maLop, int maSinhvien) {
+		lopDao.dangKiHoc(maLop, maSinhvien);
+	}
+
 	
 	public List<Lop> getLimitList(int pageNum) {
 		// so lop moi page
@@ -42,10 +43,10 @@ public class LopService implements ServiceInterface<Integer, Lop> {
 
 		// tim limit neu cac lop con lai < so lop yeu cau
 		// vd yeu cau 50 lop ma chi co 46 lop -> limit = 6
-		if ((rowStart * soLop + soLop) < numberOfLop)
+		if ((rowStart + soLop) < numberOfLop)
 			limit = soLop;
 		else
-			limit = numberOfLop - (rowStart * soLop);
+			limit = numberOfLop - rowStart ;
 		
 		// page = 1 -> list 1-10
 		List<Lop> list = lopDao.getLopLimit(rowStart, limit);

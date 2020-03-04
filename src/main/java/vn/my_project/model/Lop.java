@@ -125,7 +125,7 @@ public class Lop implements java.io.Serializable {
 	}
 
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinTable(name = "giaovien_lop", joinColumns = { @JoinColumn(name = "ma_lop") }, inverseJoinColumns = {
+	@JoinTable(name = "sinhvien_lop", joinColumns = { @JoinColumn(name = "ma_lop") }, inverseJoinColumns = {
 			@JoinColumn(name = "ma_sinhvien") })
 	public Set<Sinhvien> getSinhviens() {
 		return this.sinhviens;
@@ -133,6 +133,11 @@ public class Lop implements java.io.Serializable {
 
 	public void setSinhviens(Set<Sinhvien> sinhviens) {
 		this.sinhviens = sinhviens;
+	}
+
+	@Override
+	public String toString() {
+		return "Lop [maLop=" + maLop + ", tenLop=" + tenLop + "]";
 	}
 
 }

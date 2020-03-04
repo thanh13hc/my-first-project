@@ -49,16 +49,15 @@
 			<c:forEach var="lop" items="${list}">
 				<tbody>
 					<tr>
-						<th scope="row">
-						<input type="checkbox" name="${lop.maLop}">
+						<th scope="row"><input type="checkbox" name="${lop.maLop}">
 						<td>${lop.tenLop}</td>
 						<td>${lop.monhoc.tenMonhoc}</td>
 						<td>${lop.ngayBatdau}</td>
 						<td>${lop.ngayKetthuc}</td>
 						<td>${lop.soGioHoc}</td>
-						<td><a href="/QuanLiLop/mon?page=form-edit&&id=${lop.maLop}"> <i class="far fa-edit"></i>
-						</a> <a
-							href="/QuanLiLop/mon?page=delete&&id=${lop.maLop}"><i
+						<td><a href="/QuanLiLop/mon?page=form-edit&&id=${lop.maLop}">
+								<i class="far fa-edit"></i>
+						</a> <a href="/QuanLiLop/mon?page=delete&&id=${lop.maLop}"><i
 								class="fas fa-trash"></i></a></td>
 					</tr>
 				</tbody>
@@ -67,9 +66,13 @@
 		<input type="submit" class="btn btn-danger" value="Xóa">
 	</form>
 	<div class="row mt-3">
+		<%
+			Integer p = Integer.valueOf((request.getParameter("p") == null ? "1" : request.getParameter("p")));
+			Integer maxPage = (Integer) request.getAttribute("maxPage");
+		%>
 		<c:choose>
-			<c:when test="${p}>1}">
-				<a href="/QuanLiLop/lop?p=${p-1}">Previous</a>
+			<c:when test="<%=p > 1%>">
+				<a href="/QuanLiLop/lop?p=<%=p - 1%>">Previous</a>
 			</c:when>
 			<c:otherwise>
 				<a href="/QuanLiLop/lop?p=1">Previous</a>
@@ -77,18 +80,18 @@
 		</c:choose>
 
 		<span style="margin: 0px 1.5rem; color: #333; letter-spacing: 10px">
-			<span><%=request.getParameter("p") == null ? 1 : request.getParameter("p")%></span> / ${maxPage}
+			<span><%=request.getParameter("p") == null ? 1 : request.getParameter("p")%></span>
+			/ ${maxPage}
 		</span>
 
 		<c:choose>
-			<c:when test="${p}<${maxPage}">
-				<a href="/QuanLiLop/lop?p=${p+1}">Next</a>
+			<c:when test="<%=p < maxPage%>">
+				<a href="/QuanLiLop/lop?p=<%=p + 1%>">Next</a>
 			</c:when>
 			<c:otherwise>
 				<a href="/QuanLiLop/lop?p=${maxPage}">Next</a>
 			</c:otherwise>
 		</c:choose>
-
 	</div>
 
 </body>

@@ -48,9 +48,10 @@
 						<th scope="row"><input type="checkbox" name="${mon.maMonhoc}">
 						<td>${mon.maMonhoc}</td>
 						<td>${mon.tenMonhoc}</td>
-						<td><a href="/QuanLiLop/mon?page=form-edit&&id=${mon.maMonhoc}"> <i class="far fa-edit"></i>
-						</a> <a
-							href="/QuanLiLop/mon?page=delete&&id=${mon.maMonhoc}"><i
+						<td><a
+							href="/QuanLiLop/mon?page=form-edit&&id=${mon.maMonhoc}"> <i
+								class="far fa-edit"></i>
+						</a> <a href="/QuanLiLop/mon?page=delete&&id=${mon.maMonhoc}"><i
 								class="fas fa-trash"></i></a></td>
 					</tr>
 				</tbody>
@@ -59,9 +60,13 @@
 		<input type="submit" class="btn btn-danger" value="Xóa">
 	</form>
 	<div class="row mt-3">
+		<%
+		Integer p = Integer.valueOf((request.getParameter("p") == null ? "1" : request.getParameter("p")));
+			Integer maxPage = (Integer) request.getAttribute("maxPage");
+		%>
 		<c:choose>
-			<c:when test="${p}>1}">
-				<a href="/QuanLiLop/mon?p=${p-1}">Previous</a>
+			<c:when test="<%=p > 1%>">
+				<a href="/QuanLiLop/mon?p=<%=p - 1%>">Previous</a>
 			</c:when>
 			<c:otherwise>
 				<a href="/QuanLiLop/mon?p=1">Previous</a>
@@ -69,18 +74,18 @@
 		</c:choose>
 
 		<span style="margin: 0px 1.5rem; color: #333; letter-spacing: 10px">
-			<span><%=request.getParameter("p") == null ? 1 : request.getParameter("p")%></span> / ${maxPage}
+			<span><%=p == null ? 1 : p%></span>
+			/ ${maxPage}
 		</span>
 
 		<c:choose>
-			<c:when test="${p}<${maxPage}">
-				<a href="/QuanLiLop/mon?p=${p+1}">Next</a>
+			<c:when test="<%=p < maxPage%>">
+				<a href="/QuanLiLop/mon?p=<%=p + 1%>">Next</a>
 			</c:when>
 			<c:otherwise>
 				<a href="/QuanLiLop/mon?p=${maxPage}">Next</a>
 			</c:otherwise>
 		</c:choose>
-
 	</div>
 
 </body>

@@ -44,6 +44,14 @@ public class SinhvienService implements ServiceInterface<Integer, Sinhvien> {
 		return sinhvienDao.getNumberOfSinhvien();
 	}
 
+	public List<Sinhvien> getSVbyLopID(int maLop,int rowStart){
+		return sinhvienDao.getSVbyLopID(maLop,rowStart);
+	}
+	
+	public int getNumberOfSVByLopID(int maLop) {
+		return sinhvienDao.getNumberOfSVByLopID(maLop);
+	}
+	
 	public List<Sinhvien> getLimitList(int pageNum) {
 		// so sinhvien moi page
 		final int soSinhvien = 10;
@@ -53,14 +61,18 @@ public class SinhvienService implements ServiceInterface<Integer, Sinhvien> {
 
 		// tim limit neu cac sinhvien con lai < so sinhvien yeu cau
 		// vd yeu cau 50 sinhvien ma chi co 46 sinhvien -> limit = 6
-		if ((rowStart * soSinhvien + soSinhvien) < numberOfSinhvien)
+		if ((rowStart + soSinhvien) < numberOfSinhvien)
 			limit = soSinhvien;
 		else
-			limit = numberOfSinhvien - (rowStart * soSinhvien);
+			limit = numberOfSinhvien - rowStart ;
 
 		// page = 1 -> list 1-10
 		List<Sinhvien> list = sinhvienDao.getSinhvienLimit(rowStart, limit);
 		return list;
+	}
+
+	public List<Sinhvien> getSinhvienNotInLop(int maLop) {
+		return sinhvienDao.getSinhvienNotInLop(maLop) ;
 	}
 
 }

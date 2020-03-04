@@ -14,6 +14,14 @@ public class GiaovienService implements ServiceInterface<Integer, Giaovien> {
 	@Autowired
 	GiaovienDao giaovienDao;
 
+	public List<Giaovien> getGVbyLopID(int maLop, int rowStart){
+		return giaovienDao.getGVbyLopID(maLop, rowStart);
+	}
+	
+	public int getNumberOfGVByLopID(int maLop) {
+		return giaovienDao.getNumberOfGVByLopID(maLop);
+	}
+	
 	public List<Giaovien> getLimitList(int pageNum) {
 		// so lop moi page
 		final int soGiaovien = 10;
@@ -23,10 +31,10 @@ public class GiaovienService implements ServiceInterface<Integer, Giaovien> {
 
 		// tim limit neu cac lop con lai < so lop yeu cau
 		// vd yeu cau 50 lop ma chi co 46 lop -> limit = 6
-		if ((rowStart * soGiaovien + soGiaovien) < numberOfGiaovien)
+		if ((rowStart + soGiaovien) < numberOfGiaovien)
 			limit = soGiaovien;
 		else
-			limit = numberOfGiaovien - (rowStart * soGiaovien);
+			limit = numberOfGiaovien - rowStart ;
 		
 		// page = 1 -> list 1-10
 		List<Giaovien> list = giaovienDao.getGiaovienLimit(rowStart, limit);
@@ -35,6 +43,10 @@ public class GiaovienService implements ServiceInterface<Integer, Giaovien> {
 
 	public int getNumberOfGiaovien() {
 		return giaovienDao.getNumberOfGiaovien();
+	}
+	
+	public List<Giaovien> getGiaovienNotInLop(int maLop) {
+		return giaovienDao.getGiaovienNotInLop(maLop);
 	}
 	
 	@Override

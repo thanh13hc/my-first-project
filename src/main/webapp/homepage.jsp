@@ -33,13 +33,13 @@
 			</ol>
 			<div class="carousel-inner" role="listbox">
 				<div class="carousel-item active">
-					<img src="img/img1.jpg" alt="First slide" class="img-fluid">
+					<img src="https://images.pexels.com/photos/7101/wood-coffee-iphone-notebook.jpg?auto=compress&cs=tinysrgb&dpr=1&w=1366" alt="First slide" class="img-fluid">
 				</div>
 				<div class="carousel-item">
-					<img src="img/img2.jpg " alt="Second slide" class="img-fluid">
+					<img src="https://images.pexels.com/photos/1925536/pexels-photo-1925536.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=1366" alt="Second slide" class="img-fluid">
 				</div>
 				<div class="carousel-item">
-					<img src="img/img3.jpg" alt="Third slide" class="img-fluid" />
+					<img src="https://images.pexels.com/photos/6384/woman-hand-desk-office.jpg?auto=compress&cs=tinysrgb&dpr=1&w=1366" alt="Third slide" class="img-fluid" />
 				</div>
 			</div>
 			<a class="carousel-control-prev" href="#slide" role="button"

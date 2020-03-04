@@ -28,7 +28,7 @@ public class Giaovien implements java.io.Serializable {
 	public Giaovien(Integer maGiaovien) {
 		this.maGiaovien = maGiaovien;
 	}
-		
+
 	public Giaovien(String ho, String ten) {
 		this.ho = ho;
 		this.ten = ten;
@@ -81,5 +81,12 @@ public class Giaovien implements java.io.Serializable {
 	public void setLops(Set<Lop> lops) {
 		this.lops = lops;
 	}
+
+	@Override
+	public String toString() {
+		return "Giaovien [maGiaovien=" + maGiaovien + ", ho=" + ho + ", ten=" + ten + "]";
+	}
+	
+	
 
 }

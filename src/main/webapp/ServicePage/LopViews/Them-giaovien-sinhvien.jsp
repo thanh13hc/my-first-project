@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Đăng kí giảng dạy</title>
+<title>Đăng kí học - giảng dạy</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link
 	href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i&display=swap&subset=vietnamese"
@@ -38,23 +38,46 @@
 				<div class="row mb-3" style="background-color: #435D7D;">
 					<div class="col-sm-12 mt-3 mb-3">
 						<h4 style="color: whitesmoke;">
-							Đăng kí <span style="font-weight: bolder;">giảng dạy </span>
+							Đăng kí <span style="font-weight: bolder;">học - giảng dạy
+							</span>
 						</h4>
 					</div>
 				</div>
 				<div class="row">
 					<!-- form -->
-					<form action="/QuanLiLop/giaovien?page=dang-ki-giang-day"
+					<form action="/QuanLiLop/lop?page=them-sv-gv"
 						method="POST" class="form-horizontal" role="form"
 						style="width: 100%;">
 						<div class="form-group offset-sm-1">
-							<label for="" class="col-sm-3 control-label">Chọn lớp học
-								*</label>
+							<label for="" class="col-sm-3  control-label"> Mã lớp</label>
 							<div class="col-sm-9">
-								<select class="form-control" name="lophocs" id="lophocs"
+								<input type="hidden" name="maLop" value="${lop.maLop}">
+								<input type="text" id="" class="form-control" value="${lop.maLop}"
+									disabled>
+							</div>
+						</div>
+						<div class="form-group offset-sm-1">
+							<label for="" class="col-sm-3  control-label"> Tên lớp</label>
+							<div class="col-sm-9">
+								<input type="text" id="" class="form-control" value="${lop.tenLop}"
+									disabled>
+							</div>
+						</div>
+						<div class="form-group offset-sm-1">
+							<label for="" class="col-sm-3  control-label"> Số giờ học</label>
+							<div class="col-sm-9">
+								<input type="text" id="" class="form-control" value="${lop.soGioHoc}"
+									disabled>
+							</div>
+						</div>
+						<div class="form-group offset-sm-1">
+							<label for="" class="col-sm-3 control-label">Chọn sinh
+								viên *</label>
+							<div class="col-sm-9">
+								<select class="form-control" name="sinhviens" id="sinhviens"
 									required>
-									<c:forEach var="lop" items="${listLop}">
-										<option value="${lop.maLop}">${lop.tenLop}</option>
+									<c:forEach var="sv" items="${listSv}">
+										<option value="${sv.maSinhvien}">${sv.ho} ${sv.ten}</option>
 									</c:forEach>
 								</select>
 							</div>
@@ -65,8 +88,9 @@
 							<div class="col-sm-9">
 								<select class="form-control" name="giaoviens" id="giaoviens"
 									required>
-									<c:forEach var="giaovien" items="${listGiaovien}">
-										<option value="${giaovien.maGiaovien}">${giaovien.ho} ${giaovien.ten}</option>
+									<c:forEach var="giaovien" items="${listGv}">
+										<option value="${giaovien.maGiaovien}">${giaovien.ho}
+											${giaovien.ten}</option>
 									</c:forEach>
 								</select>
 							</div>
@@ -101,9 +125,5 @@
 			</p>
 		</div>
 	</section>
-
-	<%@include file="../../footer.jsp"%>
 </body>
 </html>
-
-

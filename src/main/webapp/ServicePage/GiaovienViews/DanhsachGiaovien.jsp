@@ -39,18 +39,21 @@
 					<th scope="col">#</th>
 					<th scope="col">Mã giáo viên</th>
 					<th scope="col">Họ</th>
-					<th scope="col">Tên </th>
+					<th scope="col">Tên</th>
 					<th scope="col">Actions</th>
 				</tr>
 			</thead>
 			<c:forEach var="giaovien" items="${list}">
 				<tbody>
 					<tr>
-						<th scope="row"><input type="checkbox" name="${giaovien.maGiaovien}">
+						<th scope="row"><input type="checkbox"
+							name="${giaovien.maGiaovien}">
 						<td>${giaovien.maGiaovien}</td>
 						<td>${giaovien.ho}</td>
 						<td>${giaovien.ten}</td>
-						<td><a href="/QuanLiLop/giaovien?page=form-edit&&id=${giaovien.maGiaovien}"> <i class="far fa-edit"></i>
+						<td><a
+							href="/QuanLiLop/giaovien?page=form-edit&&id=${giaovien.maGiaovien}">
+								<i class="far fa-edit"></i>
 						</a> <a
 							href="/QuanLiLop/giaovien?page=delete&&id=${giaovien.maGiaovien}"><i
 								class="fas fa-trash"></i></a></td>
@@ -61,9 +64,13 @@
 		<input type="submit" class="btn btn-danger" value="Xóa">
 	</form>
 	<div class="row mt-3">
+		<%
+			Integer p = Integer.valueOf((request.getParameter("p") == null ? "1" : request.getParameter("p")));
+			Integer maxPage = (Integer) request.getAttribute("maxPage");
+		%>
 		<c:choose>
-			<c:when test="${p}>1}">
-				<a href="/QuanLiLop/giaovien?p=${p-1}">Previous</a>
+			<c:when test="<%=p > 1%>">
+				<a href="/QuanLiLop/giaovien?p=<%=p - 1%>">Previous</a>
 			</c:when>
 			<c:otherwise>
 				<a href="/QuanLiLop/giaovien?p=1">Previous</a>
@@ -71,18 +78,17 @@
 		</c:choose>
 
 		<span style="margin: 0px 1.5rem; color: #333; letter-spacing: 10px">
-			<span><%=request.getParameter("p") == null ? 1 : request.getParameter("p")%></span> / ${maxPage}
+			<span><%=p == null ? 1 : p%></span> / ${maxPage}
 		</span>
 
 		<c:choose>
-			<c:when test="${p}<${maxPage}">
-				<a href="/QuanLiLop/giaovien?p=${p+1}">Next</a>
+			<c:when test="<%=p < maxPage%>">
+				<a href="/QuanLiLop/giaovien?p=<%=p + 1%>">Next</a>
 			</c:when>
 			<c:otherwise>
 				<a href="/QuanLiLop/giaovien?p=${maxPage}">Next</a>
 			</c:otherwise>
 		</c:choose>
-
 	</div>
 
 </body>
