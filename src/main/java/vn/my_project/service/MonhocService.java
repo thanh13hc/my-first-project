@@ -3,8 +3,10 @@ package vn.my_project.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import vn.my_project.dao.DaoImplement;
 import vn.my_project.dao.MonhocDao;
 import vn.my_project.model.Monhoc;
 
@@ -12,6 +14,7 @@ import vn.my_project.model.Monhoc;
 public class MonhocService implements ServiceInterface<Integer, Monhoc> {
 
 	@Autowired
+	@Qualifier(value="monhocDao")
 	MonhocDao monhocDao;
 
 	public List<Monhoc> getLimitList(int pageNum) {

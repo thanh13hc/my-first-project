@@ -29,8 +29,6 @@ import vn.my_project.utils.DateTimeFomatter;
 @WebServlet(value = "/lop")
 public class DanhsachLop extends HttpServlet {
 
-	static Logger log = Logger.getLogger(DanhsachLop.class.getName());
-	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("text/html;charset=utf-8");
@@ -78,7 +76,6 @@ public class DanhsachLop extends HttpServlet {
 
 	void themForm(HttpServletRequest req, HttpServletResponse resp, LopService lopService, SinhvienService sinhvienService,
 			GiaovienService giaovienService) throws ServletException, IOException {
-		log.info("Trang đăng kí học - giảng dạy chưa trong lớp ...");
 		int maLop = Integer.valueOf(req.getParameter("id"));
 		
 		Lop lop = lopService.readByID(maLop);
@@ -93,7 +90,6 @@ public class DanhsachLop extends HttpServlet {
 	}
 
 	void themSvGvForm(HttpServletRequest req, HttpServletResponse resp, LopService lopService) throws ServletException, IOException {
-			log.info("Trang danh sách Lop de dang ki học - giang dạy ...");
 		
 			int pageNum = Integer.valueOf((req.getParameter("p") == null ? "1" : req.getParameter("p")));
 			List<Lop> list = lopService.getLimitList(pageNum);
@@ -106,7 +102,6 @@ public class DanhsachLop extends HttpServlet {
 
 	private void timkiemGV(HttpServletRequest req, HttpServletResponse resp, GiaovienService giaovienService)
 			throws ServletException, IOException {
-		log.info("Trang tìm kiếm -> danh sách giáo viên");
 		
 		int maLop = Integer.valueOf(req.getParameter("lopID"));
 		int pageNum = Integer.valueOf((req.getParameter("p") == null ? "1" : req.getParameter("p")));
@@ -127,7 +122,6 @@ public class DanhsachLop extends HttpServlet {
 
 	private void timkiemSV(HttpServletRequest req, HttpServletResponse resp, SinhvienService sinhvienService)
 			throws ServletException, IOException {
-		log.info("Trang tìm kiếm -> danh sách sinh viên");
 		
 		int maLop = Integer.valueOf(req.getParameter("lopID"));
 		int pageNum = Integer.valueOf((req.getParameter("p") == null ? "1" : req.getParameter("p")));
@@ -148,10 +142,8 @@ public class DanhsachLop extends HttpServlet {
 
 	void timkiemGet(HttpServletRequest req, HttpServletResponse resp, LopService lopService)
 			throws ServletException, IOException {
-		
-		log.info("Tìm kiếm lớp học không có query ...");
-		
 		String query = req.getParameter("query");
+		
 		if (query == null) {
 			int pageNum = Integer.valueOf((req.getParameter("p") == null ? "1" : req.getParameter("p")));
 			List<Lop> list = lopService.getLimitList(pageNum);
@@ -181,8 +173,6 @@ public class DanhsachLop extends HttpServlet {
 
 	void addForm(HttpServletRequest req, HttpServletResponse resp, MonhocService monhocService)
 			throws ServletException, IOException {
-		log.info("Tạo lớp form ...");
-
 		List<Monhoc> list = monhocService.readAll();
 		req.setAttribute("list", list);
 		req.getRequestDispatcher("ServicePage/LopViews/TaoLopViews.jsp").include(req, resp);
@@ -198,7 +188,6 @@ public class DanhsachLop extends HttpServlet {
 
 	void listLop(HttpServletRequest req, HttpServletResponse resp, LopService lopService)
 			throws ServletException, IOException {
-		log.info("Danh sach Lop ...");
 		int pageNum = Integer.valueOf((req.getParameter("p") == null ? "1" : req.getParameter("p")));
 		List<Lop> list = lopService.getLimitList(pageNum);
 
@@ -244,7 +233,6 @@ public class DanhsachLop extends HttpServlet {
 	}
 
 	 void themSvGv(HttpServletRequest req, HttpServletResponse resp, LopService lopService) throws IOException {
-		log.info("Đăng kí học - giảng dạy ...");
 		 int maLop = Integer.valueOf(req.getParameter("maLop"));
 		int maSinhvien = Integer.valueOf(req.getParameter("sinhviens"));
 		int maGiaovien = Integer.valueOf(req.getParameter("giaoviens"));
@@ -257,9 +245,8 @@ public class DanhsachLop extends HttpServlet {
 
 	void timkiemPost(HttpServletRequest req, HttpServletResponse resp, LopService lopService)
 			throws ServletException, IOException {
-		log.info("Trang tìm kiếm có query: "+req.getParameter("query")+" ...");
-		
 		String query = req.getParameter("query");
+		
 		if (query == null) {
 			int pageNum = Integer.valueOf((req.getParameter("p") == null ? "1" : req.getParameter("p")));
 			List<Lop> list = lopService.getLimitList(pageNum);
@@ -290,8 +277,6 @@ public class DanhsachLop extends HttpServlet {
 
 	void add(HttpServletRequest req, HttpServletResponse resp, MonhocService monService, LopService lopService)
 			throws IOException {
-		log.info("Thêm lớp ...");
-		
 		String lopName = req.getParameter("lopName");
 		Monhoc mon = monService.readByID(Integer.valueOf(req.getParameter("monhocs")));
 		Date startDate = null;

@@ -8,6 +8,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Primary;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Repository;
 
@@ -16,10 +17,9 @@ import vn.my_project.model.Sinhvien;
 import vn.my_project.service.SinhvienService;
 
 @Repository
+@Primary
 public class SinhvienDao extends DaoImplement<Integer, Sinhvien> {
 
-	static Logger log = Logger.getLogger(SinhvienDao.class.getName());
-	
 	public int getNumberOfSinhvien() {
 		Session session = null;
 		Transaction tx = null;
@@ -52,11 +52,9 @@ public class SinhvienDao extends DaoImplement<Integer, Sinhvien> {
 			q.setFirstResult(rowStart);
 			q.setMaxResults(maxRow);
 			sv = q.list();
-			log.info("Load Sinhvien("+rowStart+"-"+(rowStart+maxRow)+") sucessfully, Sinhvien detail: "+sv);
 			tx.commit();
 		} catch (Exception e) {
 			tx.rollback();
-			log.info("Load Sinhvien("+rowStart+"-"+(rowStart+maxRow)+") unsucessfully");
 			e.printStackTrace();
 		}finally {
 			if (session != null)
@@ -85,11 +83,9 @@ public class SinhvienDao extends DaoImplement<Integer, Sinhvien> {
 			q.setFirstResult(startPosition);
 			q.setMaxResults(10);
 			sv = q.list();
-			log.info("Load Sinhvien("+rowStart+"-"+(rowStart+10)+") from LopID("+maLop+") sucessfully, Sinhvien detail: "+sv);
 			tx.commit();
 		} catch (Exception e) {
 			tx.rollback();
-			log.error("Load Sinhvien("+rowStart+"-"+(rowStart+10)+") from LopID("+maLop+") unsucessfully");
 			e.printStackTrace();
 		}finally {
 			if (session != null)
@@ -142,11 +138,9 @@ public class SinhvienDao extends DaoImplement<Integer, Sinhvien> {
 			tx = session.beginTransaction();
 			Query q = session.createQuery(hql.toString());
 			list = q.list();
-			log.info("Load Sinhvien Not in Lop from LopID("+maLop+") sucessfully, Sinhvien detail: "+list);
 			tx.commit();
 		} catch (Exception e) {
 			tx.rollback();
-			log.error("Load Sinhvien Not in Lop from LopID("+maLop+") unsucessfully");
 			e.printStackTrace();
 		}finally {
 			if (session != null)

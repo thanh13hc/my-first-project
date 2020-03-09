@@ -6,6 +6,7 @@ import org.apache.log4j.Logger;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 
 import vn.my_project.model.Giaovien;
@@ -13,9 +14,8 @@ import vn.my_project.model.Lop;
 import vn.my_project.model.Sinhvien;
 
 @Repository
+@Primary
 public class GiaovienDao extends DaoImplement<Integer, Giaovien>{
-	
-	static Logger log = Logger.getLogger(GiaovienDao.class.getName());
 	
 	public List<Giaovien> getGiaovienLimit(int rowStart, int maxRow) {
 		Session session = null;
@@ -29,11 +29,9 @@ public class GiaovienDao extends DaoImplement<Integer, Giaovien>{
 			q.setFirstResult(rowStart);
 			q.setMaxResults(maxRow);
 			giaovien = q.list();
-			log.info("Load Giaovien("+rowStart+"-"+(rowStart+maxRow)+") sucessfully, Giaovien detail: "+giaovien);
 			tx.commit();
 		} catch (Exception e) {
 			tx.rollback();
-			log.info("Load Giaovien("+rowStart+"-"+(rowStart+maxRow)+") unsucessfully");
 			e.printStackTrace();
 		}finally {
 			if (session != null)
@@ -138,11 +136,9 @@ public class GiaovienDao extends DaoImplement<Integer, Giaovien>{
 			Query q = session.createQuery(hql.toString());
 			list = q.list();
 			
-			log.info("Load Giaovien Not in Lop from LopID("+maLop+") sucessfully, Sinhvien detail: "+list);
 			tx.commit();
 		} catch (Exception e) {
 			tx.rollback();
-			log.info("Load Giaovien Not in Lop from LopID("+maLop+") unsucessfully");
 			e.printStackTrace();
 		}finally {
 			if (session != null)

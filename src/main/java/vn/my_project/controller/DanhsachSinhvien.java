@@ -28,8 +28,6 @@ import vn.my_project.utils.DateTimeFomatter;
 @WebServlet(value = "/sinhvien")
 public class DanhsachSinhvien extends HttpServlet {
 
-	static Logger log = Logger.getLogger(DanhsachSinhvien.class.getName());
-	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("text/html;charset=utf-8");
@@ -94,8 +92,6 @@ public class DanhsachSinhvien extends HttpServlet {
 
 	void dangKiHoc(HttpServletRequest req, HttpServletResponse resp, MonhocService monhocService)
 			throws ServletException, IOException {
-		log.info("Trang danh sách môn học(đăng kí học) ...");
-		
 		int pageNum = Integer.valueOf((req.getParameter("p") == null ? "1" : req.getParameter("p")));
 		int numbmberOfMon = monhocService.getNumberOfMonhoc();
 
@@ -124,8 +120,6 @@ public class DanhsachSinhvien extends HttpServlet {
 
 	void listSinhvien(HttpServletRequest req, HttpServletResponse resp, SinhvienService sinhvienService)
 			throws ServletException, IOException {
-		log.info("Trang danh sách sinh viên ...");
-		
 		int pageNum = Integer.valueOf((req.getParameter("p") == null ? "1" : req.getParameter("p")));
 		int numbmberOfSinhvien = sinhvienService.getNumberOfSinhvien();
 

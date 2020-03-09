@@ -8,6 +8,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 
 import vn.my_project.model.Giaovien;
@@ -15,6 +16,7 @@ import vn.my_project.model.Lop;
 import vn.my_project.model.Sinhvien;
 
 @Repository
+@Primary
 public class LopDao extends DaoImplement<Integer, Lop> {
 
 	@Autowired
@@ -22,9 +24,6 @@ public class LopDao extends DaoImplement<Integer, Lop> {
 	
 	@Autowired
 	SinhvienDao sinhvienDao;
-	
-	static Logger log = Logger.getLogger(LopDao.class.getName());
-
 	
 	public List<Lop> getLopBySearchQuery(String q) {
 		Session session = null;
@@ -43,12 +42,10 @@ public class LopDao extends DaoImplement<Integer, Lop> {
 			lop = query.list();
 			
 			int result = lop.size();
-			log.info("Load lop by name like '"+q+"' sucessfully, result: "+result);
 			
 			tx.commit();
 		} catch (Exception e) {
 			tx.rollback();
-			log.error("Load lop by name like '"+q+"' unsucessfully");
 			e.printStackTrace();
 		} finally {
 			if (session != null)
@@ -74,10 +71,8 @@ public class LopDao extends DaoImplement<Integer, Lop> {
 			lop.setGiaoviens(setGV);
 			
 			session.merge(lop);
-			log.info("Dang ki giang day thanh cong, Lop detail: "+lop+" - Giaovien detail:"+gv);
 			tx.commit();
 		} catch (Exception e) {
-			log.info("Dang ki giang day khong thanh cong");
 			tx.rollback();
 			e.printStackTrace();
 		} finally {
@@ -121,10 +116,8 @@ public class LopDao extends DaoImplement<Integer, Lop> {
 			q.setFirstResult(rowStart);
 			q.setMaxResults(maxRow);
 			lop = q.list();
-			log.info("Load Lop("+rowStart+"-"+(rowStart+maxRow)+") sucessfully, Monhoc detail: "+lop);
 			tx.commit();
 		} catch (Exception e) {
-			log.info("Load Mon hoc("+rowStart+"-"+(rowStart+maxRow)+") unsucessfully");
 			tx.rollback();
 			e.printStackTrace();
 		} finally {
@@ -196,10 +189,8 @@ public class LopDao extends DaoImplement<Integer, Lop> {
 			
 			session.merge(lop);
 			
-			log.info("Đăng ki học thanh cong, Sinhvien detail: "+sv+" - Lop detail:"+lop);
 			tx.commit();
 		} catch (Exception e) {
-			log.error("Đăng ki học khong thanh cong");
 			tx.rollback();
 			e.printStackTrace();
 		} finally {

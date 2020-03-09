@@ -26,8 +26,6 @@ import vn.my_project.utils.DateTimeFomatter;
 @WebServlet(value = "/giaovien")
 public class DanhsachGiaovien extends HttpServlet {
 
-	static Logger log = Logger.getLogger(DanhsachGiaovien.class.getName());
-	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("text/html;charset=utf-8");
@@ -35,7 +33,7 @@ public class DanhsachGiaovien extends HttpServlet {
 		resp.setCharacterEncoding("utf-8");
 		
 		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-		GiaovienService giaovienService = (GiaovienService) context.getBean("giaovienService");
+		GiaovienService giaovienService = (GiaovienService) context.getBean("giaovienService",GiaovienService.class);
 		LopService lopService = (LopService) context.getBean("lopService");
 		
 		String page = req.getParameter("page");
@@ -63,7 +61,6 @@ public class DanhsachGiaovien extends HttpServlet {
 	 
 
 	private void dangKiGiangDayForm(HttpServletRequest req, HttpServletResponse resp,LopService lopService, GiaovienService giaovienService) throws ServletException, IOException {
-		log.info("Trang đăng kí giảng dạy ...");
 		
 		List<Lop> listLop = lopService.readAll();
 		List<Giaovien> listGiaovien = giaovienService.readAll();
@@ -93,7 +90,6 @@ public class DanhsachGiaovien extends HttpServlet {
 
 	void listGiaovien(HttpServletRequest req, HttpServletResponse resp, GiaovienService giaovienService)
 			throws ServletException, IOException {
-		log.info("Trang danh sách giáo viên ...");
 		
 		int pageNum = Integer.valueOf((req.getParameter("p") == null ? "1" : req.getParameter("p")));
 		int numbmberOfGiaovien = giaovienService.getNumberOfGiaovien();
@@ -142,7 +138,6 @@ public class DanhsachGiaovien extends HttpServlet {
 	}
 
 	private void dangKiGiangDay(HttpServletRequest req, HttpServletResponse resp, LopService lopService) throws IOException {
-		log.info("Trang đăng kí giảng dạy ...");
 		
 		int maLop = Integer.valueOf(req.getParameter("lophocs"));
 		int maGiaovien = Integer.valueOf(req.getParameter("giaoviens"));

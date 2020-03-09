@@ -4,21 +4,17 @@ import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
-import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javassist.NotFoundException;
-import net.bytebuddy.asm.Advice.This;
 
 public class DaoImplement<ID extends Serializable, T> implements DaoInterface<ID, T> {
 
 	@Autowired
 	SessionFactory sessionFactory;
-	
-	static Logger log = Logger.getLogger(DaoImplement.class.getName());
 	
 	Class<T> persistantClass = getPersistantClass();
 
@@ -40,10 +36,8 @@ public class DaoImplement<ID extends Serializable, T> implements DaoInterface<ID
 			session = sessionFactory.openSession();
 			transaction = session.beginTransaction();
 			session.save(obj);
-			log.info("CREATE "+getPersistantClassName()+" successfull, "+getPersistantClassName()+" detail:"+obj);
 			transaction.commit();
 		} catch (Exception e) {
-			log.error("CREATE "+this.getPersistantClassName()+" unsucessfully");
 			e.printStackTrace();
 			transaction.rollback();
 		} finally {
@@ -84,12 +78,10 @@ public class DaoImplement<ID extends Serializable, T> implements DaoInterface<ID
 			transaction = session.beginTransaction();
 			obj = (T) session.get(this.persistantClass, id);
 			if (obj == null) {
-				throw new NotFoundException("NOT FOUND " + this.getPersistantClassName() + " " + id, null);
+				throw new NotFoundException("NOT FOUND " + this.getPersistantClassName() + " " + id);
 			}
-			log.info("GET "+getPersistantClassName()+" successfull, "+getPersistantClassName()+" detail:"+obj);
 			transaction.commit();
 		} catch (Exception e) {
-			log.error("GET "+this.getPersistantClassName()+" unsucessfully");
 			e.printStackTrace();
 			transaction.rollback();
 		} finally {
@@ -108,10 +100,8 @@ public class DaoImplement<ID extends Serializable, T> implements DaoInterface<ID
 			session = sessionFactory.openSession();
 			transaction = session.beginTransaction();
 			session.merge(this.getPersistantClassName(), obj);
-			log.info("UPDATE "+getPersistantClassName()+" successfull, "+getPersistantClassName()+" detail:"+obj);
 			transaction.commit();
 		} catch (Exception e) {
-			log.error("UPDATE "+this.getPersistantClassName()+" unsucessfully");
 			e.printStackTrace();
 			transaction.rollback();
 		} finally {
@@ -130,10 +120,8 @@ public class DaoImplement<ID extends Serializable, T> implements DaoInterface<ID
 			transaction = session.beginTransaction();
 			obj = this.readByID(id);
 			session.delete(this.getPersistantClassName(), obj);
-			log.info("DELETE "+getPersistantClassName()+" successfull, "+getPersistantClassName()+" detail:"+obj);
 			transaction.commit();
 		} catch (Exception e) {
-			log.info("DELETE "+getPersistantClassName()+" unsuccessfull, ");
 			e.printStackTrace();
 			transaction.rollback();
 		} finally {
