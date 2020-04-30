@@ -57,8 +57,7 @@ public class LopDaoImpl implements LopDao {
 	public void insertLop(Lop lop) {
 		Session session = sessionFactory.getCurrentSession();
 
-		session.persist(Lop.class.getSimpleName(), lop);
-
+		session.save(lop);
 	}
 
 	@Transactional
