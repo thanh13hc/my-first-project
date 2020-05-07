@@ -8,11 +8,13 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.transform.Transformers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import platform.web.springmvc.model.Lop;
+import platform.web.springmvc.model.LopDTO;
 
 @Repository
 public class LopDaoImpl implements LopDao {
@@ -21,23 +23,30 @@ public class LopDaoImpl implements LopDao {
 	SessionFactory sessionFactory;
 
 	@Transactional
-	public List<Lop> getAll() {
-		List<Lop> list = new ArrayList<Lop>();
+	public List<LopDTO> getAll() {
 		Session session = sessionFactory.getCurrentSession();
-		list = session.createNamedQuery("From Lop").list();
+		StringBuilder query = new StringBuilder();
+
+		query.append("Select l.maLop as maLop, l.tenLop as tenLop, l.ngayBatdau as ngayBatdau,");
+		query.append(" l.ngayKetthuc as ngayKetthuc, l.soGioHoc as soGioHoc");
+		query.append(" from Lop as l");
+
+		List<LopDTO> list = session.createQuery(query.toString()).unwrap(org.hibernate.Query.class)
+				.setResultTransformer(Transformers.aliasToBean(LopDTO.class)).getResultList();
+
 		return list;
 	}
 
 	@Transactional
-	public Lop getLopByID(int id) {
+	public LopDTO getLopByID(int id) {
 		Session session = sessionFactory.getCurrentSession();
 
 		Criteria criteria = session.createCriteria(Lop.class);
 		criteria.add(Restrictions.eq("id", id));
 
-		Lop lop = (Lop) criteria.list().get(0);
+		Lop l = (Lop) criteria.list().get(0);
 
-		return lop;
+		return new LopDTO(l.getMaLop(), l.getTenLop(), l.getNgayBatdau(), l.getNgayKetthuc(), l.getSoGioHoc());
 	}
 
 	@Transactional
@@ -72,9 +81,9 @@ public class LopDaoImpl implements LopDao {
 	public void delete(int id) {
 		Session session = sessionFactory.getCurrentSession();
 
-		Lop lop = getLopByID(id);
-
-		session.delete(lop);
+		Lop lop = (Lop) session.get(Lop.class.getSimpleName(), id);
+		if (lop != null)
+			session.delete(lop);
 	}
 
 	@Transactional

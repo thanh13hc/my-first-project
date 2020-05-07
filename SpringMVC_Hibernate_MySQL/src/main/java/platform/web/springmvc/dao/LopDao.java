@@ -3,12 +3,13 @@ package platform.web.springmvc.dao;
 import java.util.List;
 
 import platform.web.springmvc.model.Lop;
+import platform.web.springmvc.model.LopDTO;
 
 public interface LopDao {
 	
-	public List<Lop> getAll();
+	public List<LopDTO> getAll();
 	
-	public Lop getLopByID(int id);
+	public LopDTO getLopByID(int id);
 	
 	public List<Lop> getLopByMonhocID(int id);
 	

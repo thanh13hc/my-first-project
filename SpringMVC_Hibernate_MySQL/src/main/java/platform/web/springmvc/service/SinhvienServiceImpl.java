@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import platform.web.springmvc.dao.SinhvienDao;
 import platform.web.springmvc.model.Sinhvien;
+import platform.web.springmvc.model.SinhvienDTO;
 
 @Service
 public class SinhvienServiceImpl implements SinhvienService{
@@ -16,12 +17,12 @@ public class SinhvienServiceImpl implements SinhvienService{
 	SinhvienDao sinhvienDao;
 	
 	@Transactional
-	public List<Sinhvien> getAll() {
+	public List<SinhvienDTO> getAll() {
 		return sinhvienDao.getAll();
 	}
 
 	@Transactional
-	public Sinhvien getSinhvienByID(int id) {
+	public SinhvienDTO getSinhvienByID(int id) {
 		return sinhvienDao.getSinhvienByID(id);
 	}
 

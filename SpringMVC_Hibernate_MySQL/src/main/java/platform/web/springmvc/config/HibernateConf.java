@@ -14,10 +14,12 @@ import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @Configuration
 @EnableWebMvc
+@EnableTransactionManagement(proxyTargetClass = true)
 @PropertySource("classpath:hibernateconfig.properties")
 @ComponentScan(basePackages = { "platform.web.springmvc" })
 public class HibernateConf {
@@ -65,10 +67,12 @@ public class HibernateConf {
 		properties.put("hibernate.dialect", environment.getRequiredProperty("hibernate.dialect"));
 		properties.put("hibernate.show_sql", environment.getRequiredProperty("hibernate.show_sql"));
 		properties.put("hibernate.format_sql", environment.getRequiredProperty("hibernate.format_sql"));
+		properties.put("hibernate.enable_lazy_load_no_trans", environment.getRequiredProperty("hibernate.enable_lazy_load_no_trans"));
 		properties.put("current_session_context_class", environment.getProperty("current_session_context_class"));
 		System.out.println(" - hibernate.dialect:" + environment.getRequiredProperty("hibernate.dialect"));
 		System.out.println(" - hibernate.show_sql:" + environment.getRequiredProperty("hibernate.show_sql"));
-		System.out.println(" - hibernate.format_sql" + environment.getRequiredProperty("hibernate.format_sql"));
+		System.out.println(" - hibernate.format_sql:" + environment.getRequiredProperty("hibernate.format_sql"));
+		//System.out.println(" - hibernate.enable_lazy_load_no_trans:" + environment.getRequiredProperty("hibernate.enable_lazy_load_no_trans"));
 		System.out.println(
 				" - current_session_context_class:" + environment.getProperty("current_session_context_class"));
 		return properties;
@@ -86,7 +90,7 @@ public class HibernateConf {
 	 * System.out.println(">>>>>>End transactionManager\n\n\n\n"); return txManager;
 	 * }
 	 */
-	
+
 	@Bean
 	public HibernateTransactionManager getTransactionManager() {
 		System.out.println("\n\n\n\n>>>>>>HibernateConfiguration.getTransactionManager -->SessionFactory: ");

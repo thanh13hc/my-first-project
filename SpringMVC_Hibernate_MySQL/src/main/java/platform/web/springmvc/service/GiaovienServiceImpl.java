@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import platform.web.springmvc.dao.GiaovienDao;
 import platform.web.springmvc.model.Giaovien;
+import platform.web.springmvc.model.GiaovienDTO;
 
 @Service
 public class GiaovienServiceImpl implements GiaovienService{
@@ -16,12 +17,12 @@ public class GiaovienServiceImpl implements GiaovienService{
 	GiaovienDao giaovienDao;
 	
 	@Transactional
-	public List<Giaovien> getAll() {
+	public List<GiaovienDTO> getAll() {
 		return giaovienDao.getAll();
 	}
 
 	@Transactional
-	public Giaovien getGiaovienByID(int id) {
+	public GiaovienDTO getGiaovienByID(int id) {
 		return giaovienDao.getGiaovienByID(id);
 	}
 

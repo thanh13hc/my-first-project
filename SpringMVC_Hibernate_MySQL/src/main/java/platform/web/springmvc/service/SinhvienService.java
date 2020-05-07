@@ -3,12 +3,13 @@ package platform.web.springmvc.service;
 import java.util.List;
 
 import platform.web.springmvc.model.Sinhvien;
+import platform.web.springmvc.model.SinhvienDTO;
 
 public interface SinhvienService {
 	
-	public List<Sinhvien> getAll();
+	public List<SinhvienDTO> getAll();
 	
-	public Sinhvien getSinhvienByID(int id);
+	public SinhvienDTO getSinhvienByID(int id);
 	
 	public List<Sinhvien> getSinhvienByLopID(int id);
 	

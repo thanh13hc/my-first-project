@@ -3,12 +3,13 @@ package platform.web.springmvc.dao;
 import java.util.List;
 
 import platform.web.springmvc.model.Monhoc;
+import platform.web.springmvc.model.MonhocDTO;
 
 public interface MonhocDao {
 	
-	public List<Monhoc> getAll();
+	public List<MonhocDTO> getAll();
 	
-	public Monhoc getMonhocByID(int id);
+	public MonhocDTO getMonhocByID(int id);
 	
 	public List<Monhoc> getMonhocByName(String name);
 	

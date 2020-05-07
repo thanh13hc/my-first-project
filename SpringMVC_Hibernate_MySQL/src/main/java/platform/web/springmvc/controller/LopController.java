@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import platform.web.springmvc.model.Lop;
+import platform.web.springmvc.model.LopDTO;
 import platform.web.springmvc.service.LopService;
+import platform.web.springmvc.service.LopServiceImpl;
 
 @Controller
 public class LopController {
@@ -24,24 +26,24 @@ public class LopController {
 	private static final Logger logger = LoggerFactory.getLogger(LopController.class);
 
 	@RequestMapping(value = RestURIConstants.DUMMY_LOP, method = RequestMethod.GET)
-	public @ResponseBody Lop getDummyLop() {
+	public @ResponseBody LopDTO getDummyLop() {
 		logger.info("Start getDummyLop");
-		Lop lop = lopService.getLopByID(01);
+		LopDTO lop = lopService.getLopByID(01);
 		System.out.println("\n\n\n\n>>>>>> Lop: " + lop.getTenLop());
 		return lop;
 	}
 
 	@RequestMapping(value = RestURIConstants.GET_LOP, method = RequestMethod.GET)
-	public @ResponseBody Lop getLop(@PathVariable("id") int id) {
+	public @ResponseBody LopDTO getLop(@PathVariable("id") int id) {
 		logger.info("Start getLop. ID = " + id);
-		Lop lop = lopService.getLopByID(id);
+		LopDTO lop = lopService.getLopByID(id);
 		return lop;
 	}
 
 	@RequestMapping(value = RestURIConstants.GET_ALL_LOP, method = RequestMethod.GET)
-	public @ResponseBody List<Lop> getLops() {
+	public @ResponseBody List<LopDTO> getLops() {
 		logger.info("Start getAllLops");
-		List<Lop> list = lopService.getAll();
+		List<LopDTO> list = lopService.getAll();
 		return list;
 	}
 

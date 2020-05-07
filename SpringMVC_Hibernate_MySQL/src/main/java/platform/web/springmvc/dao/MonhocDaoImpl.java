@@ -8,12 +8,13 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.transform.Transformers;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.annotation.CreatedBy;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import platform.web.springmvc.model.Monhoc;
+import platform.web.springmvc.model.MonhocDTO;
 
 @Repository
 public class MonhocDaoImpl implements MonhocDao {
@@ -22,17 +23,23 @@ public class MonhocDaoImpl implements MonhocDao {
 	SessionFactory sessionFactory;
 
 	@Transactional
-	public List<Monhoc> getAll() {
-		List<Monhoc> list = new ArrayList<Monhoc>();
+	public List<MonhocDTO> getAll() {
 		Session session = sessionFactory.getCurrentSession();
+		StringBuilder query = new StringBuilder();
+		
+		query.append("Select m.maMonhoc as maMonhoc, m.tenMonhoc as tenMonhoc");
+		query.append(" from Monhoc m");
 
-		list = session.createQuery("from Monhoc").list();
-
+		List<MonhocDTO> list = session.createQuery(query.toString())
+		.unwrap(org.hibernate.Query.class)
+		.setResultTransformer(Transformers.aliasToBean(MonhocDTO.class))
+		.getResultList();
+		
 		return list;
 	}
 
 	@Transactional
-	public Monhoc getMonhocByID(int id) {
+	public MonhocDTO getMonhocByID(int id) {
 		Session session = sessionFactory.getCurrentSession();
 
 		Criteria criteria = session.createCriteria(Monhoc.class);
@@ -40,7 +47,7 @@ public class MonhocDaoImpl implements MonhocDao {
 
 		Monhoc mon = (Monhoc) criteria.list().get(0);
 
-		return mon;
+		return new MonhocDTO(mon.getMaMonhoc(), mon.getTenMonhoc());
 	}
 
 	@Transactional
@@ -73,7 +80,7 @@ public class MonhocDaoImpl implements MonhocDao {
 	public void delete(int id) {
 		
 		Session session = sessionFactory.getCurrentSession();
-		Monhoc mon = getMonhocByID(id);
+		Monhoc mon = (Monhoc) session.get(Monhoc.class.getSimpleName(), id);
 
 		if (mon != null)
 			session.delete(mon);

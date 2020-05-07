@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import platform.web.springmvc.dao.LopDao;
+import platform.web.springmvc.dao.LopDaoImpl;
 import platform.web.springmvc.model.Lop;
+import platform.web.springmvc.model.LopDTO;
 
 @Service
 public class LopServiceImpl implements LopService{
@@ -16,12 +18,12 @@ public class LopServiceImpl implements LopService{
 	LopDao lopDao;
 	
 	@Transactional
-	public List<Lop> getAll() {
+	public List<LopDTO> getAll() {
 		return lopDao.getAll();
 	}
 
 	@Transactional
-	public Lop getLopByID(int id) {
+	public LopDTO getLopByID(int id) {
 		return lopDao.getLopByID(id);
 	}
 

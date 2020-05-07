@@ -6,22 +6,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import platform.web.springmvc.dao.MonhocDao;
 import platform.web.springmvc.dao.MonhocDaoImpl;
 import platform.web.springmvc.model.Monhoc;
+import platform.web.springmvc.model.MonhocDTO;
 
 @Service
 public class MonhocServiceImpl implements MonhocService{
 
 	@Autowired
-	MonhocDaoImpl monhocDaoImpl;
+	MonhocDao monhocDaoImpl;
 
 	@Transactional
-	public List<Monhoc> getAll() {
+	public List<MonhocDTO> getAll() {
 		return monhocDaoImpl.getAll();
 	}
 
 	@Transactional
-	public Monhoc getMonhocByID(int id) {
+	public MonhocDTO getMonhocByID(int id) {
 		return monhocDaoImpl.getMonhocByID(id);
 	}
 

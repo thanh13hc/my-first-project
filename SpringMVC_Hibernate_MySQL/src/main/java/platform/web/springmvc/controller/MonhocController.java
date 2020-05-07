@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import platform.web.springmvc.model.Monhoc;
+import platform.web.springmvc.model.MonhocDTO;
 import platform.web.springmvc.service.MonhocService;
 
 @Controller
@@ -24,24 +25,24 @@ public class MonhocController {
 	private static final Logger logger = LoggerFactory.getLogger(MonhocController.class);
 
 	@RequestMapping(value = RestURIConstants.DUMMY_MONHOC, method = RequestMethod.GET)
-	public @ResponseBody Monhoc getDummyMonHoc() {
+	public @ResponseBody MonhocDTO getDummyMonHoc() {
 		logger.info("Start getDummyMonHoc");
-		Monhoc mon = monhocService.getMonhocByID(01);
+		MonhocDTO mon = monhocService.getMonhocByID(01);
 		System.out.println("\n\n\n\n>>>>>> Monhoc: " + mon.getTenMonhoc());
 		return mon;
 	}
 
 	@RequestMapping(value = RestURIConstants.GET_MONHOC, method = RequestMethod.GET)
-	public @ResponseBody Monhoc getMonhoc(@PathVariable("id") int id) {
+	public @ResponseBody MonhocDTO getMonhoc(@PathVariable("id") int id) {
 		logger.info("Start getMonhoc. ID = " + id);
-		Monhoc mon = monhocService.getMonhocByID(id);
+		MonhocDTO mon = monhocService.getMonhocByID(id);
 		return mon;
 	}
 
 	@RequestMapping(value = RestURIConstants.GET_ALL_MONHOC, method = RequestMethod.GET)
-	public @ResponseBody List<Monhoc> getMonhocs() {
+	public @ResponseBody List<MonhocDTO> getMonhocs() {
 		logger.info("Start getAllMonhocs");
-		List<Monhoc> list = monhocService.getAll();
+		List<MonhocDTO> list = monhocService.getAll();
 		return list;
 	}
 

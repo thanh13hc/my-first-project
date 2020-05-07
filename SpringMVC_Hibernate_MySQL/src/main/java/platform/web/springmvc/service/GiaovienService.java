@@ -3,12 +3,13 @@ package platform.web.springmvc.service;
 import java.util.List;
 
 import platform.web.springmvc.model.Giaovien;
+import platform.web.springmvc.model.GiaovienDTO;
 
 public interface GiaovienService {
 	
-	public List<Giaovien> getAll();
+	public List<GiaovienDTO> getAll();
 	
-	public Giaovien getGiaovienByID(int id);
+	public GiaovienDTO getGiaovienByID(int id);
 	
 	public List<Giaovien> getGiaovienByLopID(int id);
 	

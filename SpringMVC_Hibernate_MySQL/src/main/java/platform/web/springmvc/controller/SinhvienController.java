@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import platform.web.springmvc.model.Sinhvien;
+import platform.web.springmvc.model.SinhvienDTO;
 import platform.web.springmvc.service.SinhvienService;
 
 @Controller
@@ -24,24 +25,24 @@ public class SinhvienController {
 	private static final Logger logger = LoggerFactory.getLogger(SinhvienController.class);
 
 	@RequestMapping(value = RestURIConstants.DUMMY_SINHVIEN, method = RequestMethod.GET)
-	public @ResponseBody Sinhvien getDummyMonHoc() {
+	public @ResponseBody SinhvienDTO getDummyMonHoc() {
 		logger.info("Start getDummyMonHoc");
-		Sinhvien sinhvien = sinhvienService.getSinhvienByID(01);
+		SinhvienDTO sinhvien = sinhvienService.getSinhvienByID(01);
 		System.out.println("\n\n\n\n>>>>>> Sinhvien: " + sinhvien.getHo() + " " + sinhvien.getTen());
 		return sinhvien;
 	}
 
 	@RequestMapping(value = RestURIConstants.GET_SINHVIEN, method = RequestMethod.GET)
-	public @ResponseBody Sinhvien getSinhvien(@PathVariable("id") int id) {
+	public @ResponseBody SinhvienDTO getSinhvien(@PathVariable("id") int id) {
 		logger.info("Start getSinhvien. ID = " + id);
-		Sinhvien sinhvien = sinhvienService.getSinhvienByID(id);
+		SinhvienDTO sinhvien = sinhvienService.getSinhvienByID(id);
 		return sinhvien;
 	}
 
 	@RequestMapping(value = RestURIConstants.GET_ALL_SINHVIEN, method = RequestMethod.GET)
-	public @ResponseBody List<Sinhvien> getSinhviens() {
+	public @ResponseBody List<SinhvienDTO> getSinhviens() {
 		logger.info("Start getAllSinhviens");
-		List<Sinhvien> list = sinhvienService.getAll();
+		List<SinhvienDTO> list = sinhvienService.getAll();
 		return list;
 	}
 

@@ -4,40 +4,51 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.transform.Transformers;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import platform.web.springmvc.model.Giaovien;
+import platform.web.springmvc.model.GiaovienDTO;
 
-public class GiaovienDaoImpl {
+@Repository
+public class GiaovienDaoImpl implements GiaovienDao{
 	@Autowired
 	SessionFactory sessionFactory;
 
 	@Transactional
-	public List<Giaovien> getAll() {
+	public List<GiaovienDTO> getAll() {
 		Session session = sessionFactory.getCurrentSession();
-
-		List<Giaovien> list = new ArrayList<Giaovien>();
-		list = session.createQuery("From Giaovien").list();
+		StringBuilder query = new StringBuilder();
+		
+		query.append("Select gv.maGiaovien as maGiaovien, gv.ho as ho, gv.ten as ten");
+		query.append(" from Giaovien gv");
+		
+		List<GiaovienDTO> list = session.createQuery(query.toString())
+				.unwrap(Query.class)
+				.setResultTransformer(Transformers.aliasToBean(GiaovienDTO.class))
+				.getResultList();
 
 		return list;
 	}
 
 	@Transactional
-	public Giaovien getGiaovienByID(int id) {
+	public GiaovienDTO getGiaovienByID(int id) {
 
 		Session session = sessionFactory.getCurrentSession();
 
 		Criteria criteria = session.createCriteria(Giaovien.class);
 		criteria.add(Restrictions.eq("maGiaovien", id));
 
-		Giaovien giaovien = (Giaovien) criteria.list().get(0);
+		Giaovien gv = (Giaovien) criteria.list().get(0);
 
-		return giaovien;
+		return new GiaovienDTO(gv.getMaGiaovien(), gv.getHo(), gv.getTen());
 	}
 
 	@Transactional
@@ -80,9 +91,10 @@ public class GiaovienDaoImpl {
 	@Transactional
 	public void delete(int id) {
 		Session session = sessionFactory.getCurrentSession();
-		Giaovien giaovien = getGiaovienByID(id);
+		Giaovien giaovien = (Giaovien) session.get(Giaovien.class.getSimpleName(), id);
 
 		if (giaovien != null)
 			session.delete(giaovien);
 	}
+	
 }

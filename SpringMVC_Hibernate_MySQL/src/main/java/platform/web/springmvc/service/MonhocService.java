@@ -3,12 +3,13 @@ package platform.web.springmvc.service;
 import java.util.List;
 
 import platform.web.springmvc.model.Monhoc;
+import platform.web.springmvc.model.MonhocDTO;
 
 public interface MonhocService {
 
-public List<Monhoc> getAll();
+public List<MonhocDTO> getAll();
 	
-	public Monhoc getMonhocByID(int id);
+	public MonhocDTO getMonhocByID(int id);
 	
 	public List<Monhoc> getMonhocByName(String name);
 	
