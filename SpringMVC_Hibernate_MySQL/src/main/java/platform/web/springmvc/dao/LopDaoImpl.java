@@ -13,8 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import platform.web.springmvc.dto.LopDTO;
+import platform.web.springmvc.dto.MonhocDTO;
 import platform.web.springmvc.model.Lop;
-import platform.web.springmvc.model.LopDTO;
 
 @Repository
 public class LopDaoImpl implements LopDao {
@@ -81,7 +82,7 @@ public class LopDaoImpl implements LopDao {
 	public void delete(int id) {
 		Session session = sessionFactory.getCurrentSession();
 
-		Lop lop = (Lop) session.get(Lop.class.getSimpleName(), id);
+		Lop lop = (Lop) session.get(Lop.class, id);
 		if (lop != null)
 			session.delete(lop);
 	}

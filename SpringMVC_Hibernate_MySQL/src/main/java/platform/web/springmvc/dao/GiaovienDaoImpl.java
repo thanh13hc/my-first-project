@@ -14,8 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import platform.web.springmvc.dto.GiaovienDTO;
 import platform.web.springmvc.model.Giaovien;
-import platform.web.springmvc.model.GiaovienDTO;
 
 @Repository
 public class GiaovienDaoImpl implements GiaovienDao{
@@ -91,7 +91,7 @@ public class GiaovienDaoImpl implements GiaovienDao{
 	@Transactional
 	public void delete(int id) {
 		Session session = sessionFactory.getCurrentSession();
-		Giaovien giaovien = (Giaovien) session.get(Giaovien.class.getSimpleName(), id);
+		Giaovien giaovien = (Giaovien) session.get(Giaovien.class, id);
 
 		if (giaovien != null)
 			session.delete(giaovien);

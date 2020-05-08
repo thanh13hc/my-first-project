@@ -2,8 +2,8 @@ package platform.web.springmvc.dao;
 
 import java.util.List;
 
+import platform.web.springmvc.dto.LopDTO;
 import platform.web.springmvc.model.Lop;
-import platform.web.springmvc.model.LopDTO;
 
 public interface LopDao {
 	

@@ -12,8 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import platform.web.springmvc.dao.MonhocDao;
+import platform.web.springmvc.dto.MonhocDTO;
 import platform.web.springmvc.model.Monhoc;
-import platform.web.springmvc.model.MonhocDTO;
 import platform.web.springmvc.service.MonhocService;
 
 @Controller
@@ -21,14 +22,18 @@ public class MonhocController {
 
 	@Autowired
 	private MonhocService monhocService;
+	
+	@Autowired
+	private MonhocDao monhocDao;
 
 	private static final Logger logger = LoggerFactory.getLogger(MonhocController.class);
 
 	@RequestMapping(value = RestURIConstants.DUMMY_MONHOC, method = RequestMethod.GET)
-	public @ResponseBody MonhocDTO getDummyMonHoc() {
+	public @ResponseBody List<Monhoc> getDummyMonHoc() {
 		logger.info("Start getDummyMonHoc");
-		MonhocDTO mon = monhocService.getMonhocByID(01);
-		System.out.println("\n\n\n\n>>>>>> Monhoc: " + mon.getTenMonhoc());
+		//MonhocDTO mon = monhocService.getMonhocByID(01);
+		//System.out.println("\n\n\n\n>>>>>> Monhoc: " + mon.getTenMonhoc());
+		List<Monhoc> mon =  monhocDao.getMonhocByName("java");
 		return mon;
 	}
 

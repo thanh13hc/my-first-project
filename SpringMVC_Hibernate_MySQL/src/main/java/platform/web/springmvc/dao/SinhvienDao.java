@@ -2,8 +2,8 @@ package platform.web.springmvc.dao;
 
 import java.util.List;
 
+import platform.web.springmvc.dto.SinhvienDTO;
 import platform.web.springmvc.model.Sinhvien;
-import platform.web.springmvc.model.SinhvienDTO;
 
 public interface SinhvienDao {
 	

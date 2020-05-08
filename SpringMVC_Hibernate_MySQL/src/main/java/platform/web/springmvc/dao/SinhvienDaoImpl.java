@@ -14,8 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import platform.web.springmvc.dto.SinhvienDTO;
 import platform.web.springmvc.model.Sinhvien;
-import platform.web.springmvc.model.SinhvienDTO;
 
 @Repository
 public class SinhvienDaoImpl implements SinhvienDao {
@@ -92,7 +92,7 @@ public class SinhvienDaoImpl implements SinhvienDao {
 	@Transactional
 	public void delete(int id) {
 		Session session = sessionFactory.getCurrentSession();
-		Sinhvien sinhvien = (Sinhvien) session.get(Sinhvien.class.getSimpleName(), id);
+		Sinhvien sinhvien = (Sinhvien) session.get(Sinhvien.class, id);
 
 		if (sinhvien != null)
 			session.delete(sinhvien);

@@ -8,8 +8,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import platform.web.springmvc.dao.MonhocDao;
 import platform.web.springmvc.dao.MonhocDaoImpl;
+import platform.web.springmvc.dto.MonhocDTO;
 import platform.web.springmvc.model.Monhoc;
-import platform.web.springmvc.model.MonhocDTO;
 
 @Service
 public class MonhocServiceImpl implements MonhocService{

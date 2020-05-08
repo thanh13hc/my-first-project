@@ -8,7 +8,7 @@ public class RestURIConstants {
 	public static final String GET_ALL_MONHOC = "/rest/monhocs";
 	public static final String CREATE_MONHOC = "/rest/monhoc/create";
 	public static final String EDIT_MONHOC = "/rest/monhoc/edit";
-	public static final String DELETE_MONHOC = "/rest/monhoc/delete";
+	public static final String DELETE_MONHOC = "/rest/monhoc/{id}";
 
 	// URI for lop
 	public static final String DUMMY_LOP = "/rest/lop/dummy";
@@ -16,7 +16,7 @@ public class RestURIConstants {
 	public static final String GET_ALL_LOP = "/rest/lops";
 	public static final String CREATE_LOP = "/rest/lop/create";
 	public static final String EDIT_LOP = "/rest/lop/edit";
-	public static final String DELETE_LOP = "/rest/lop/delete";
+	public static final String DELETE_LOP = "/rest/lop/{id}";
 
 	// URI for sinhvien
 	public static final String DUMMY_SINHVIEN = "/rest/sinhvien/dummy";
@@ -24,7 +24,7 @@ public class RestURIConstants {
 	public static final String GET_ALL_SINHVIEN = "/rest/sinhviens";
 	public static final String CREATE_SINHVIEN = "/rest/sinhvien/create";
 	public static final String EDIT_SINHVIEN = "/rest/sinhvien/edit";
-	public static final String DELETE_SINHVIEN = "/rest/sinhvien/delete";
+	public static final String DELETE_SINHVIEN = "/rest/sinhvien/{id}";
 
 	// URI for giaovien
 	public static final String DUMMY_GIAOVIEN = "/rest/giaovien/dummy";
@@ -32,6 +32,6 @@ public class RestURIConstants {
 	public static final String GET_ALL_GIAOVIEN = "/rest/giaoviens";
 	public static final String CREATE_GIAOVIEN = "/rest/giaovien/create";
 	public static final String EDIT_GIAOVIEN = "/rest/giaovien/edit";
-	public static final String DELETE_GIAOVIEN = "/rest/giaovien/delete";
+	public static final String DELETE_GIAOVIEN = "/rest/giaovien/{id}";
 
 }

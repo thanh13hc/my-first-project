@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import platform.web.springmvc.dto.SinhvienDTO;
 import platform.web.springmvc.model.Sinhvien;
-import platform.web.springmvc.model.SinhvienDTO;
 import platform.web.springmvc.service.SinhvienService;
 
 @Controller

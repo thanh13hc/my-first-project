@@ -2,8 +2,8 @@ package platform.web.springmvc.dao;
 
 import java.util.List;
 
+import platform.web.springmvc.dto.GiaovienDTO;
 import platform.web.springmvc.model.Giaovien;
-import platform.web.springmvc.model.GiaovienDTO;
 
 public interface GiaovienDao {
 	

@@ -70,7 +70,7 @@ public class Lop implements java.io.Serializable {
 		this.maLop = maLop;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "ma_monhoc", nullable = false)
 	public Monhoc getMonhoc() {
 		return this.monhoc;
@@ -118,7 +118,7 @@ public class Lop implements java.io.Serializable {
 		this.soGioHoc = soGioHoc;
 	}
 
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "giaovien_lop", joinColumns = { @JoinColumn(name = "ma_lop") }, inverseJoinColumns = {
 			@JoinColumn(name = "ma_giaovien") })
 	public Set<Giaovien> getGiaoviens() {
@@ -129,7 +129,7 @@ public class Lop implements java.io.Serializable {
 		this.giaoviens = giaoviens;
 	}
 
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "sinhvien_lop", joinColumns = { @JoinColumn(name = "ma_lop") }, inverseJoinColumns = {
 			@JoinColumn(name = "ma_sinhvien") })
 	public Set<Sinhvien> getSinhviens() {

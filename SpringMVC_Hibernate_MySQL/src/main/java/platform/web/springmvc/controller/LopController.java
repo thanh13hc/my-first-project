@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import platform.web.springmvc.dto.LopDTO;
 import platform.web.springmvc.model.Lop;
-import platform.web.springmvc.model.LopDTO;
 import platform.web.springmvc.service.LopService;
 import platform.web.springmvc.service.LopServiceImpl;
 

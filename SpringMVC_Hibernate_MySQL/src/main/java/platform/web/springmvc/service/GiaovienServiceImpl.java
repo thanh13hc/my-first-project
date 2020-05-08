@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import platform.web.springmvc.dao.GiaovienDao;
+import platform.web.springmvc.dto.GiaovienDTO;
 import platform.web.springmvc.model.Giaovien;
-import platform.web.springmvc.model.GiaovienDTO;
 
 @Service
 public class GiaovienServiceImpl implements GiaovienService{

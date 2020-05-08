@@ -13,8 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import platform.web.springmvc.dto.MonhocDTO;
 import platform.web.springmvc.model.Monhoc;
-import platform.web.springmvc.model.MonhocDTO;
 
 @Repository
 public class MonhocDaoImpl implements MonhocDao {
@@ -80,8 +80,7 @@ public class MonhocDaoImpl implements MonhocDao {
 	public void delete(int id) {
 		
 		Session session = sessionFactory.getCurrentSession();
-		Monhoc mon = (Monhoc) session.get(Monhoc.class.getSimpleName(), id);
-
+		Monhoc mon = (Monhoc) session.get(Monhoc.class, id);
 		if (mon != null)
 			session.delete(mon);
 

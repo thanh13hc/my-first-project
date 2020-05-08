@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import platform.web.springmvc.dto.GiaovienDTO;
 import platform.web.springmvc.model.Giaovien;
-import platform.web.springmvc.model.GiaovienDTO;
 import platform.web.springmvc.service.GiaovienService;
 
 @Controller

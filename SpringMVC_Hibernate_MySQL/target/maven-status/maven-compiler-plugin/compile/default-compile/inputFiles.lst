@@ -8,6 +8,7 @@ D:\eclipse-workspace\SpringMVC_Hibernate_MySQL\src\main\java\platform\package-in
 D:\eclipse-workspace\SpringMVC_Hibernate_MySQL\src\main\java\platform\web\springmvc\service\LopService.java
 D:\eclipse-workspace\SpringMVC_Hibernate_MySQL\src\main\java\platform\web\springmvc\dao\LopDao.java
 D:\eclipse-workspace\SpringMVC_Hibernate_MySQL\src\main\java\platform\web\springmvc\service\GiaovienService.java
+D:\eclipse-workspace\SpringMVC_Hibernate_MySQL\src\main\java\platform\web\springmvc\dto\MonhocDTO.java
 D:\eclipse-workspace\SpringMVC_Hibernate_MySQL\src\main\java\platform\web\springmvc\dao\GiaovienDao.java
 D:\eclipse-workspace\SpringMVC_Hibernate_MySQL\src\main\java\platform\web\springmvc\dao\SinhvienDaoImpl.java
 D:\eclipse-workspace\SpringMVC_Hibernate_MySQL\src\main\java\platform\web\springmvc\service\SinhvienServiceImpl.java
@@ -16,15 +17,18 @@ D:\eclipse-workspace\SpringMVC_Hibernate_MySQL\src\main\java\platform\web\spring
 D:\eclipse-workspace\SpringMVC_Hibernate_MySQL\src\main\java\platform\web\springmvc\service\LopServiceImpl.java
 D:\eclipse-workspace\SpringMVC_Hibernate_MySQL\src\main\java\platform\web\springmvc\controller\LopController.java
 D:\eclipse-workspace\SpringMVC_Hibernate_MySQL\src\main\java\platform\web\springmvc\model\Monhoc.java
+D:\eclipse-workspace\SpringMVC_Hibernate_MySQL\src\main\java\platform\web\springmvc\dto\LopDTO.java
 D:\eclipse-workspace\SpringMVC_Hibernate_MySQL\src\main\java\platform\web\springmvc\controller\RestURIConstants.java
 D:\eclipse-workspace\SpringMVC_Hibernate_MySQL\src\main\java\platform\web\springmvc\config\AppConfig.java
 D:\eclipse-workspace\SpringMVC_Hibernate_MySQL\src\main\java\platform\web\springmvc\controller\GiaovienController.java
 D:\eclipse-workspace\SpringMVC_Hibernate_MySQL\src\main\java\platform\web\springmvc\model\Lop.java
 D:\eclipse-workspace\SpringMVC_Hibernate_MySQL\src\main\java\platform\web\springmvc\dao\GiaovienDaoImpl.java
 D:\eclipse-workspace\SpringMVC_Hibernate_MySQL\src\main\java\platform\web\springmvc\dao\MonhocDaoImpl.java
+D:\eclipse-workspace\SpringMVC_Hibernate_MySQL\src\main\java\platform\web\springmvc\dto\SinhvienDTO.java
 D:\eclipse-workspace\SpringMVC_Hibernate_MySQL\src\main\java\platform\web\springmvc\service\MonhocService.java
 D:\eclipse-workspace\SpringMVC_Hibernate_MySQL\src\main\java\platform\web\springmvc\dao\LopDaoImpl.java
 D:\eclipse-workspace\SpringMVC_Hibernate_MySQL\src\main\java\platform\web\springmvc\reponsitory\package-info.java
+D:\eclipse-workspace\SpringMVC_Hibernate_MySQL\src\main\java\platform\web\springmvc\dto\GiaovienDTO.java
 D:\eclipse-workspace\SpringMVC_Hibernate_MySQL\src\main\java\platform\web\springmvc\package-info.java
 D:\eclipse-workspace\SpringMVC_Hibernate_MySQL\src\main\java\platform\web\springmvc\model\Giaovien.java
 D:\eclipse-workspace\SpringMVC_Hibernate_MySQL\src\main\java\platform\web\springmvc\model\Sinhvien.java

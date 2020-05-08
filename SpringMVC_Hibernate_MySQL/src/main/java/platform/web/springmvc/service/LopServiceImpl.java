@@ -8,8 +8,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import platform.web.springmvc.dao.LopDao;
 import platform.web.springmvc.dao.LopDaoImpl;
+import platform.web.springmvc.dto.LopDTO;
 import platform.web.springmvc.model.Lop;
-import platform.web.springmvc.model.LopDTO;
 
 @Service
 public class LopServiceImpl implements LopService{

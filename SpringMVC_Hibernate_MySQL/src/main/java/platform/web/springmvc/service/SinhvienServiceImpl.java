@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import platform.web.springmvc.dao.SinhvienDao;
+import platform.web.springmvc.dto.SinhvienDTO;
 import platform.web.springmvc.model.Sinhvien;
-import platform.web.springmvc.model.SinhvienDTO;
 
 @Service
 public class SinhvienServiceImpl implements SinhvienService{

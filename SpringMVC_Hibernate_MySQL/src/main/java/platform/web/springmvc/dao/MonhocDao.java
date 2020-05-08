@@ -2,8 +2,8 @@ package platform.web.springmvc.dao;
 
 import java.util.List;
 
+import platform.web.springmvc.dto.MonhocDTO;
 import platform.web.springmvc.model.Monhoc;
-import platform.web.springmvc.model.MonhocDTO;
 
 public interface MonhocDao {
 	

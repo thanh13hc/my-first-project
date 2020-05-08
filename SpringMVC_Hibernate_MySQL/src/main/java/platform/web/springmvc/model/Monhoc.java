@@ -2,6 +2,8 @@ package platform.web.springmvc.model;
 
 import java.util.HashSet;
 import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -21,7 +23,7 @@ public class Monhoc implements java.io.Serializable {
 
 	public Monhoc() {
 	}
-
+ 
 	public Monhoc(Integer maMon) {
 		this.maMonhoc = maMon;
 	}
@@ -61,7 +63,7 @@ public class Monhoc implements java.io.Serializable {
 		this.tenMonhoc = tenMonhoc;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "monhoc")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "monhoc",cascade=CascadeType.ALL)
 	public Set<Lop> getLops() {
 		return this.lops;
 	}
